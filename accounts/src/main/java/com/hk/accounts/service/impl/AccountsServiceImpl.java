@@ -15,7 +15,6 @@ import com.hk.accounts.service.AccountsService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
 
@@ -34,8 +33,6 @@ public class AccountsServiceImpl implements AccountsService {
         }
 
         Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
-        customer.setCreatedAt(LocalDateTime.now());
-        customer.setCreatedBy("Anonymous");
 
         Customer savedCustomer = customerRepository.save(customer);
 
@@ -50,8 +47,6 @@ public class AccountsServiceImpl implements AccountsService {
         newAccount.setAccountNumber(randomAccNumber);
         newAccount.setAccountType(AccountsConstants.SAVINGS);
         newAccount.setBranchAddress(AccountsConstants.ADDRESS);
-        newAccount.setCreatedAt(LocalDateTime.now());
-        newAccount.setCreatedBy("Anonymous");
 
         return newAccount;
     }
@@ -79,13 +74,15 @@ public class AccountsServiceImpl implements AccountsService {
         if (accountsDto != null) {
             Accounts accounts =
                     accountsRepository.findById(accountsDto.getAccountNumber())
-                            .orElseThrow(() -> new ResourceNotFoundException("Account", "AccountNumber", accountsDto.getAccountNumber().toString()));
+                            .orElseThrow(() -> new ResourceNotFoundException("Account", "AccountNumber",
+                                    accountsDto.getAccountNumber().toString()));
             AccountsMapper.mapToAccounts(accountsDto, accounts);
             accounts = accountsRepository.save(accounts);
 
             Long customerId = accounts.getCustomerId();
             Customer customer =
-                    customerRepository.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("Customer", "CustomerID", customerId.toString()));
+                    customerRepository.findById(customerId).orElseThrow(() -> new ResourceNotFoundException("Customer"
+                            , "CustomerID", customerId.toString()));
             CustomerMapper.mapToCustomer(customerDto, customer);
             customerRepository.save(customer);
             isUpdated = true;
