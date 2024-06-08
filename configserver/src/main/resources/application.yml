@@ -5,9 +5,13 @@ spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    active: git
   cloud:
     config:
       server:
-        native:
-          search-locations: "classpath:/config"
+        git:
+          uri: "https://github.com/harishkrishnan24/eazybank.git"
+          search-paths: config
+          default-label: main
+          clone-on-start: true
+          force-pull: true
