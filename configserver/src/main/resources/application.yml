@@ -2,6 +2,12 @@
 server:
   port: 8071
 spring:
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    stream:
+      username: "guest"
+      password: "guest"
   application:
     name: "configserver"
   profiles:
@@ -17,3 +23,8 @@ spring:
           force-pull: true
 encrypt:
   key: "uzHpFnYIlPsKGk8XYgtR0uqndimFzh0B"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
