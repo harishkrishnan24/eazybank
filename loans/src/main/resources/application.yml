@@ -1,6 +1,12 @@
 server:
   port: 8090
 spring:
+  rabbitmq:
+    host: "localhost"
+    port: 5672
+    stream:
+      username: "guest"
+      password: "guest"
   application:
     name: loans
   datasource:
