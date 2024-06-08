@@ -8,7 +8,7 @@ spring:
   config:
     import: "optional:configserver:http://localhost:8071/"
   datasource:
-    url: jdbc:mysql://localhost:3306/accountsdb
+    url: jdbc:mysql://localhost:3309/accountsdb
     username: root
     password: root
   jpa:
