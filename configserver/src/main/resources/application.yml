@@ -15,3 +15,5 @@ spring:
           default-label: main
           clone-on-start: true
           force-pull: true
+encrypt:
+  key: "uzHpFnYIlPsKGk8XYgtR0uqndimFzh0B"
