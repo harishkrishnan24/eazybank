@@ -94,9 +94,6 @@ services:
       start_period: 10s
     ports:
       - "8071:8071"
-    depends_on:
-      rabbit:
-        condition: service_healthy
     extends:
       file: common-config.yml
       service: microservice-base-config
