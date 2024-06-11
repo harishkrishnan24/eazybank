@@ -63,7 +63,7 @@
 				<version>3.4.3</version>
 				<configuration>
 					<to>
-						<image>harishkrishnan1993/${project.artifactId}:s8</image>
+						<image>harishkrishnan1993/${project.artifactId}:s9</image>
 					</to>
 				</configuration>
 			</plugin>
